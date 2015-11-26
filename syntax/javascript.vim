@@ -222,7 +222,8 @@ syntax keyword javascriptCase                  contained case nextgroup=@javascr
 syntax keyword javascriptDefault               default nextgroup=javascriptCaseColon skipwhite
 syntax keyword javascriptStatementKeyword      return with yield
 syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite
-syntax keyword javascriptYield                 yield
+syntax keyword javascriptYield                 yield nextgroup=javascriptYieldGen skipwhite skipempty
+syntax match   javascriptYieldGen              contained /\*/
 
 syntax keyword javascriptTry                   try
 syntax keyword javascriptExceptions            catch throw finally
@@ -417,6 +418,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptStatementKeyword     Statement
   HiLink javascriptReturn               Statement
   HiLink javascriptYield                Statement
+  HiLink javascriptYieldGen             Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Identifier
   " HiLink javascriptType                 Type
