@@ -218,7 +218,7 @@ syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitchExp skipwhite
-syntax keyword javascriptCase                  case nextgroup=@javascriptTypes,javascriptCaseLabel skipwhite
+syntax keyword javascriptCase                  contained case nextgroup=@javascriptTypes,javascriptCaseLabel skipwhite
 syntax keyword javascriptDefault               default nextgroup=javascriptCaseColon skipwhite
 syntax keyword javascriptStatementKeyword      return with yield
 syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite
