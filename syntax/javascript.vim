@@ -186,7 +186,11 @@ syntax cluster javascriptStrings               contains=javascriptProp,javascrip
 syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptObjectLabel,javascriptClassBlock,javascriptMethodName,javascriptMethod
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break catch class const continue
+<<<<<<< 35420f44ce87a2270ea0e33a5aab45c0465ee568
 syntax keyword javascriptReservedCase          containedin=javascriptBlock,javascriptIdentifierName case
+=======
+" syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved,javascriptSwitchBlock case
+>>>>>>> Fix #104, use region to parse case
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if 
 "import,javascriptRegexpString,javascriptPropertyName
@@ -219,7 +223,7 @@ syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitchExp skipwhite
-syntax keyword javascriptCase                  case nextgroup=@javascriptTypes,javascriptCaseLabel skipwhite
+syntax keyword javascriptCase                  contained case nextgroup=@javascriptTypes,javascriptCaseLabel skipwhite
 syntax keyword javascriptDefault               default nextgroup=javascriptCaseColon skipwhite
 syntax keyword javascriptStatementKeyword      return with yield
 syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite
@@ -231,8 +235,8 @@ syntax keyword javascriptExceptions            catch throw finally
 syntax keyword javascriptDebugger              debugger
 
 syntax region  javascriptSwitchExp             contained start=/(/ end=/)/ matchgroup=javascriptParens contains=javascriptFuncKeyword,javascriptFuncComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptSwitchBlock skipwhite skipwhite skipempty
-syntax region  javascriptSwitchBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptCaseColon,@htmlJavaScript
-syntax match   javascriptCaseLabel             /[a-zA-Z_$]\k*\_s*:/he=e-1 contains=javascriptReserved,javascriptCaseColon skipwhite skipempty
+syntax region  javascriptSwitchBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptCaseColon,javascriptCaseRegion,@htmlJavaScript
+syntax region  javascriptCaseRegion            contained start=/case/ end=/:/ contains=javascriptCase,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
 syntax match   javascriptCaseColon             contained /:/ nextgroup=javascriptBlock skipwhite skipempty
 
 syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props,@javascriptProps,@_semantic transparent nextgroup=@javascriptAfterIdentifier
