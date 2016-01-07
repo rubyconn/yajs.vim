@@ -220,7 +220,7 @@ syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitchExp skipwhite
-syntax keyword javascriptCase                  case nextgroup=@javascriptTypes skipwhite
+syntax keyword javascriptCase                  case nextgroup=@javascriptTypes,javascriptCaseLabel skipwhite
 syntax keyword javascriptDefault               default nextgroup=javascriptCaseColon skipwhite
 syntax keyword javascriptStatementKeyword      return with yield
 syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite
@@ -232,7 +232,8 @@ syntax keyword javascriptDebugger              debugger
 
 syntax region  javascriptSwitchExp             contained start=/(/ end=/)/ matchgroup=javascriptParens contains=javascriptFuncKeyword,javascriptFuncComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptSwitchBlock skipwhite skipwhite skipempty
 syntax region  javascriptSwitchBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptCaseColon,@htmlJavaScript
-syntax match   javascriptCaseColon             contained /:/ nextgroup=javascriptBlock
+syntax match   javascriptCaseLabel             /[a-zA-Z_$]\k*\_s*:/he=e-1 contains=javascriptReserved,javascriptCaseColon skipwhite skipempty
+syntax match   javascriptCaseColon             contained /:/ nextgroup=javascriptBlock skipwhite skipempty
 
 syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props,@javascriptProps,@_semantic transparent nextgroup=@javascriptAfterIdentifier
 syntax match   javascriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props,javascriptProps transparent nextgroup=javascriptFuncCallArg
