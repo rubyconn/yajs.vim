@@ -210,8 +210,6 @@ syntax keyword javascriptOperator              delete new instanceof typeof void
 syntax keyword javascriptForOperator           contained in of
 syntax keyword javascriptBoolean               true false nextgroup=@javascriptComments skipwhite skipempty
 syntax keyword javascriptNull                  null undefined nextgroup=@javascriptComments skipwhite skipempty
-syntax keyword javascriptMessage               alert confirm prompt status
-syntax keyword javascriptGlobal                self top parent
 
 "Statement Keywords
 syntax keyword javascriptConditional           if else
