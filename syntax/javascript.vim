@@ -159,7 +159,7 @@ syntax match   javascriptTemplateSStringRB     /}/ contained
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=@javascriptComments skipwhite skipempty
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=@javascriptComments,@javascriptSymbols skipwhite skipempty
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
-syntax region  javascriptArray                 matchgroup=javascriptBraces start=/\[/ end=/]/ contains=@javascriptValue,javascriptForComprehension,@javascriptComments nextgroup=@javascriptComments,@javascriptSymbols,@javascriptAfterIdentifier skipwhite skipempty
+syntax region  javascriptArray                 matchgroup=javascriptBrackets start=/\[/ end=/]/ contains=@javascriptValue,javascriptForComprehension,@javascriptComments nextgroup=@javascriptComments,@javascriptSymbols,@javascriptAfterIdentifier skipwhite skipempty
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
@@ -374,6 +374,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptOpSymbol             Normal
   HiLink javascriptLogicSymbol          Boolean
   HiLink javascriptBraces               Function
+  HiLink javascriptBrackets             Function
   HiLink javascriptParens               Normal
   HiLink javascriptComment              Comment
   HiLink javascriptLineComment          Comment
