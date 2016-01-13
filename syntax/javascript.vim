@@ -214,7 +214,6 @@ syntax keyword javascriptBoolean               true false nextgroup=@javascriptC
 syntax keyword javascriptNull                  null undefined nextgroup=@javascriptComments skipwhite skipempty
 
 "Statement Keywords
-syntax keyword javascriptExceptions            catch throw finally
 syntax keyword javascriptConditional           if else
 syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
@@ -433,8 +432,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptImport               Special
   HiLink javascriptImportAs             Special
   HiLink javascriptExport               Special
-  HiLink javascriptTry                  Special
-  HiLink javascriptExceptions           Special
+  HiLink javascriptTry                  Statement
+  HiLink javascriptExceptions           Statement
 
   HiLink javascriptMethodName           Function
   HiLink javascriptMethodAccessor       Operator
