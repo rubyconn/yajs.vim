@@ -1,10 +1,11 @@
 " Vim syntax file
-" Language:     JavaScript
+" Language:     JavaScript (ECMAScript 2015)
 " Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
-" Last Change:  2015-09-11
+" Last Change:  2016-01-13
 " Version:      1.5
 " Changes:      Go to https://github.com/othree/yajs.vim for recent changes.
-" Origin:       https://github.com/jelera/vim-javascript-syntax
+" Repository:   https://github.com/othree/yajs.vim
+" Upstream:     https://github.com/jelera/vim-javascript-syntax
 " Credits:      Jose Elera Campana, Zhao Yi, Claudio Fleiner, Scott Shattuck 
 "               (This file is based on their hard work), gumnos (From the #vim 
 "               IRC Channel in Freenode)
@@ -57,19 +58,19 @@ syntax match   javascriptOpSymbols             /[+\-*/%\^~=!<>&|?]\+/ contains=j
 syntax match   javascriptInvalidOp             contained /[+\-*/%\^~=!<>&|?:]\+/
 
 syntax match   javascriptOpSymbol              contained /\(=\|?\)/ nextgroup=@javascriptExpression skipwhite skipempty " 2
-syntax match   javascriptOpSymbol              contained /\(===\|==\)/
+syntax match   javascriptOpSymbol              contained /\(===\|==\)/ " 2
 syntax match   javascriptOpSymbol              contained /!\+/ nextgroup=javascriptRegexpString skipwhite skipempty " 1
-syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/
-syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/
-syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/
-syntax match   javascriptOpSymbol              contained /\(++\|+=\|+\)/
-syntax match   javascriptOpSymbol              contained /\(--\|-=\|-\)/
-syntax match   javascriptOpSymbol              contained /\(||\||=\||\)/
-syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/
-syntax match   javascriptOpSymbol              contained /\(*=\|*\)/
-syntax match   javascriptOpSymbol              contained /\(%=\|%\)/
-syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/
-syntax match   javascriptOpSymbol              contained /\(\^\|\~\)/
+syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/ " 2
+syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ " 6
+syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/ " 4
+syntax match   javascriptOpSymbol              contained /\(++\|+=\|+\)/ " 3
+syntax match   javascriptOpSymbol              contained /\(--\|-=\|-\)/ " 3
+syntax match   javascriptOpSymbol              contained /\(||\||=\||\)/ " 3
+syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/ " 3
+syntax match   javascriptOpSymbol              contained /\(*=\|*\)/ " 2
+syntax match   javascriptOpSymbol              contained /\(%=\|%\)/ " 2
+syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/ " 2
+syntax match   javascriptOpSymbol              contained /\(\^\|\~\)/ " 2
 
 " 37 operators
 " syntax match   javascriptOpSymbol              contained /\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty
