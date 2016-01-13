@@ -214,7 +214,6 @@ syntax keyword javascriptMessage               alert confirm prompt status
 syntax keyword javascriptGlobal                self top parent
 
 "Statement Keywords
-syntax keyword javascriptExceptions            catch throw finally
 syntax keyword javascriptConditional           if else
 syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
@@ -431,8 +430,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptImport               Special
   HiLink javascriptImportAs             Special
   HiLink javascriptExport               Special
-  HiLink javascriptTry                  Special
-  HiLink javascriptExceptions           Special
+  HiLink javascriptTry                  Statement
+  HiLink javascriptExceptions           Statement
 
   HiLink javascriptMethodName           Function
   HiLink javascriptMethodAccessor       Operator
