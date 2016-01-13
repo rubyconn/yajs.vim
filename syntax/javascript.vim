@@ -45,6 +45,7 @@ setlocal iskeyword-=$
 if &filetype =~ 'javascript'
   setlocal iskeyword+=$
   syntax cluster htmlJavaScript                 contains=TOP
+  syntax cluster htmlJavaScriptForCase          contains=TOP,javascriptReservedCase
 endif
 
 syntax sync fromstart
@@ -185,7 +186,7 @@ syntax cluster javascriptStrings               contains=javascriptProp,javascrip
 syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptObjectLabel,javascriptClassBlock,javascriptMethodName,javascriptMethod
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break catch class const continue
-" syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved,javascriptSwitchBlock case
+syntax keyword javascriptReservedCase          containedin=javascriptBlock,javascriptIdentifierName case
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if 
 "import,javascriptRegexpString,javascriptPropertyName
@@ -217,22 +218,21 @@ syntax keyword javascriptConditional           if else
 syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
 syntax keyword javascriptBranch                break continue
-syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitchExp skipwhite
-syntax keyword javascriptCase                  contained case nextgroup=@javascriptTypes,javascriptCaseLabel skipwhite
-syntax keyword javascriptDefault               default nextgroup=javascriptCaseColon skipwhite
+syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitchExpression skipwhite skipempty
+syntax keyword javascriptCase                  contained case
+syntax keyword javascriptDefault               default nextgroup=javascriptCaseColon skipwhite skipempty
 syntax keyword javascriptStatementKeyword      return with yield
 syntax keyword javascriptReturn                return nextgroup=@javascriptValue skipwhite
-syntax keyword javascriptYield                 yield nextgroup=javascriptYieldGen skipwhite skipempty
+syntax keyword javascriptYield                 yield nextgroup=javascriptYieldGen skipwhite
 syntax match   javascriptYieldGen              contained /\*/
 
 syntax keyword javascriptTry                   try
 syntax keyword javascriptExceptions            catch throw finally
 syntax keyword javascriptDebugger              debugger
 
-syntax region  javascriptSwitchExp             contained start=/(/ end=/)/ matchgroup=javascriptParens contains=javascriptFuncKeyword,javascriptComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptSwitchBlock skipwhite skipwhite skipempty
->>>>>>> Fix #104, use region to parse case
-syntax region  javascriptSwitchBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptCaseColon,javascriptCaseRegion,@htmlJavaScript
-syntax region  javascriptCaseRegion            contained start=/case/ end=/:/ contains=javascriptCase,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
+syntax region  javascriptSwitchExpression      contained start=/(/ end=/)/ matchgroup=javascriptParens contains=javascriptFuncKeyword,javascriptComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptCaseBlock skipwhite skipwhite skipempty
+syntax region  javascriptCaseBlock             matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptCaseColon,javascriptCaseExpression,@htmlJavaScriptForCase
+syntax region  javascriptCaseExpression        contained start=/case/ end=/:/ contains=javascriptCase,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
 syntax match   javascriptCaseColon             contained /:/ nextgroup=javascriptBlock skipwhite skipempty
 
 syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props,@javascriptProps,@_semantic transparent nextgroup=@javascriptAfterIdentifier
@@ -330,8 +330,8 @@ syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBr
 
 " syntax match   javascriptBraces                /[\[\]]/
 syntax match   javascriptParens                /[()]/
-" syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
-syntax region  htmlScriptTag     contained start=+<script+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue,htmlTagError,htmlEvent
+
+syntax region  htmlScriptTag                   contained start=+<script+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue,htmlTagError,htmlEvent
 syntax match   javascriptWOpSymbols            contained /\_s\+/ nextgroup=javascriptOpSymbols
 syntax match   javascriptEndColons             /[;,]/
 syntax match   javascriptLogicSymbols          /[&|]\+/ contains=javascriptInvalidOp,javascriptLogicSymbol nextgroup=@javascriptExpression,@javascriptComments skipwhite skipempty
@@ -365,6 +365,7 @@ syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyn
 
 if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
+  HiLink javascriptReservedCase         Error
   HiLink javascriptInvalidOp            Error
 
   HiLink javascriptEndColons            Statement
