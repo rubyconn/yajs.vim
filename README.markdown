@@ -26,7 +26,7 @@ Use pathogen or vundle is recommended. Vundle:
 
 ### Performance Issue
 
-**yajs.vim** is not good on performance. If you are using a slower computer. You might feel lag while moving cursor. One possible solution is change to [neovim](https://neovim.io/)
+**yajs.vim** is not good on performance. If you are using a slower computer. You might feel lag while moving cursor. You can try disable [cursorline](http://vimdoc.sourceforge.net/htmldoc/options.html#%27cursorline%27), or reduce the number of [sybmaxcol](http://vimdoc.sourceforge.net/htmldoc/options.html#%27synmaxcol%27). Another possible solution is change to [neovim](https://neovim.io/)
 
 Credits
 -------
