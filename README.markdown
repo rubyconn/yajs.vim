@@ -26,7 +26,9 @@ Use pathogen or vundle is recommended. Vundle:
 
 ### Performance Issue
 
-**yajs.vim** is not good on performance. If you are using a slower computer. You might feel lag while moving cursor. You can try disable [cursorline](http://vimdoc.sourceforge.net/htmldoc/options.html#%27cursorline%27), or reduce the number of [synmaxcol](http://vimdoc.sourceforge.net/htmldoc/options.html#%27synmaxcol%27). Another possible solution is change to [neovim](https://neovim.io/)
+**yajs.vim** is not good on performance. If you are using a slower computer. You might feel lag while moving cursor. You can try disable [cursorline](http://vimdoc.sourceforge.net/htmldoc/options.html#%27cursorline%27) and [colorcolumn](http://vimdoc.sourceforge.net/htmldoc/options.html#%27colorcolumn%27), or reduce the number of [synmaxcol](http://vimdoc.sourceforge.net/htmldoc/options.html#%27synmaxcol%27). Another possible solution is change to [neovim](https://neovim.io/)
+
+If you still want cursorline highlight, some terminal have their built in support. Ex: iTerm2, Edit Profile -&gt; Colors -&gt; Cursor Colors.
 
 Credits
 -------
