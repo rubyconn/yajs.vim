@@ -45,6 +45,9 @@ Please send issue report to [github](https://github.com/othree/yajs.vim/issues).
 Changes
 -------
 
+### Version 1.6
+- Bug Fix
+
 ### Version 1.5
 - Lots of bug Fix
 
