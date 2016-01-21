@@ -4,7 +4,7 @@ YAJS: Yet Another JavaScript Syntax
 Yet Another JavaScript Syntax file for Vim. Key differences:
 
 * Use 'javascript' as group name's prefix, not 'javaScript' nor 'JavaScript'. Works great with [SyntaxComplete](https://github.com/vim-scripts/SyntaxComplete).
-* Recognize Web API and DOM keywords. Keep increase.
+* Recognize Web API and DOM keywords. Base on [Mozilla's WebIDL files](https://github.com/mozilla/gecko-dev/tree/master/dom/webidl)
 * Works perfect with [javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
 * Remove old, unused syntax definitions.
 * Support ES6 new syntax, ex: arrow function `=>`. 
@@ -23,6 +23,10 @@ But it hurt performance, so I prefer to create a new one instead of merge back.
 Use pathogen or vundle is recommended. Vundle:
 
     Plugin 'othree/yajs.vim'
+
+### 2.0
+
+Major change in 2.0 is the basic object/method data comes from Mozilla's WebIDL. Current master branch is 2.0 beta. If its not stable for you. You can `git checkout 1.6`.
 
 ### Performance Issue
 
@@ -45,21 +49,15 @@ Please send issue report to [github](https://github.com/othree/yajs.vim/issues).
 Changes
 -------
 
-### Version 1.6
+### Version 2.0
+- Include Mozilla's WebIDL
 - Bug Fix
 
-### Version 1.5
-- Lots of bug Fix
-
-### Version 1.4
-- Better Array Comprehesion support
-- Better Template highlight
-- AngularJS JSDoc module
-- Fix object literal syntax
-- Don't break vim-jsx
+### Version 1.6
+- Bug Fix
 
 License
 -------
 
-The same as Vim
+Same as Vim
 
