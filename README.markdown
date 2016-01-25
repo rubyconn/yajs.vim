@@ -49,6 +49,9 @@ Please send issue report to [github](https://github.com/othree/yajs.vim/issues).
 Changes
 -------
 
+### Version 2.0.1
+- Fix performance issue
+
 ### Version 2.0
 - Include Mozilla's WebIDL
 - Bug Fix
