@@ -98,6 +98,9 @@ try {
           def = def + ' nextgroup=javascriptFuncCallArg';
         }
       }
+      if (group === 'javascriptGlobal') {
+        def = def + ' nextgroup=@javascriptAfterIdentifier'
+      }
       console.log(def);
     }
 
