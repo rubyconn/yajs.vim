@@ -292,7 +292,7 @@ syntax region  javascriptEventString           contained start=/\z(["']\)/  skip
 syntax region  javascriptImportDef             start=/import/ end=/;\|\n/ contains=javascriptImport,javascriptImportBlock,javascriptString,javascriptEndColons keepend
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptImportAs              contained as
-syntax region  javascriptImportBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptImportAs
+syntax region  javascriptImportBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptImportAs extend
 syntax keyword javascriptExport                export nextgroup=javascriptExportDefault skipwhite
 syntax keyword javascriptExport                module
 syntax keyword javascriptExportDefault         contained default
