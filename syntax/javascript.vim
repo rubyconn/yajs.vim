@@ -44,8 +44,6 @@ endif
 setlocal iskeyword-=$
 if &filetype =~ 'javascript'
   setlocal iskeyword+=$
-  syntax cluster htmlJavaScript                 contains=TOP
-  syntax cluster htmlJavaScriptForCase          contains=TOP,javascriptReservedCase
 endif
 
 syntax sync fromstart
@@ -160,9 +158,9 @@ syntax cluster javascriptStatement             contains=javascriptBlock,javascri
 
 "Syntax in the JavaScript code
 " syntax match   javascriptASCII                 contained /\\\d\d\d/
-syntax region  javascriptTemplateSubstitution  contained matchgroup=javascriptTemplateSB start=/\${/ end=/}/ contains=@javascriptExpression
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=@javascriptComments skipwhite skipempty extend
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty extend
+syntax region  javascriptTemplateSubstitution  contained matchgroup=javascriptTemplateSB start=/\${/ end=/}/ contains=@javascriptExpression
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
 syntax region  javascriptArray                 matchgroup=javascriptBrackets start=/\[/ end=/]/ contains=@javascriptValue,javascriptComma,javascriptForComprehension,@javascriptComments nextgroup=@javascriptComments,javascriptOpSymbols,@javascriptAfterIdentifier skipwhite skipempty
 
@@ -189,7 +187,7 @@ syntax cluster javascriptStrings               contains=javascriptProp,javascrip
 syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptObjectLabel,javascriptClassBlock,javascriptMethodName,javascriptMethod
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break catch class const continue
-syntax keyword javascriptReservedCase          containedin=javascriptBlock,javascriptIdentifierName case
+syntax keyword javascriptReservedCase          containedin=ALLBUT,@javascriptNoReserved,javascriptCaseBlock case
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if 
 "import,javascriptRegexpString,javascriptPropertyName
@@ -234,6 +232,12 @@ syntax keyword javascriptExceptions            catch throw finally
 syntax keyword javascriptDebugger              debugger
 
 syntax region  javascriptSwitchExpression      contained start=/(/ end=/)/ matchgroup=javascriptParens contains=javascriptFuncKeyword,javascriptComma,javascriptDefaultAssign,@javascriptComments nextgroup=javascriptCaseBlock skipwhite skipempty
+if &filetype =~ 'javascript'
+  syntax cluster htmlJavaScriptForCase         contains=TOP,javascriptReservedCase
+else
+  syntax cluster htmlJavaScriptForCase         contains=@htmlJavaScript
+  syntax cluster htmlJavaScript                remove=javascriptReservedCase
+endif
 syntax region  javascriptCaseBlock             matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptCaseColon,javascriptCaseExpression,@htmlJavaScriptForCase fold
 syntax region  javascriptCaseExpression        contained start=/case/ end=/:/ contains=javascriptCase,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
 syntax match   javascriptCaseColon             contained /:/ nextgroup=javascriptBlock skipwhite skipempty
@@ -293,7 +297,11 @@ syntax keyword javascriptExport                export nextgroup=javascriptExport
 syntax keyword javascriptExport                module
 syntax keyword javascriptExportDefault         contained default
 
-syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
+if &filetype =~ 'javascript'
+  syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP fold
+else
+  syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
+endif
 
 syntax match   javascriptObjectMethodName      contained /[a-zA-Z_$]\k*\ze\_s*(/ nextgroup=javascriptFuncArg skipwhite skipempty
 syntax cluster javascriptObjectMethod          contains=javascriptMethodAccessor,javascriptObjectMethodName
