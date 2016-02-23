@@ -52,18 +52,17 @@ syntax sync fromstart
 syntax match   shellbang "^#!.*node\>"
 syntax match   shellbang "^#!.*iojs\>"
 
-syntax match   javascriptOpSymbols             /[+\-*/%\^~=!<>&|?]\+/ contains=javascriptOpSymbol,javascriptInvalidOp nextgroup=@javascriptComments,@javascriptExpression skipwhite skipempty
+syntax match   javascriptOpSymbols             /[+\-*/%\^~=<>&|?]\+/ contains=javascriptOpSymbol,javascriptInvalidOp nextgroup=@javascriptComments,@javascriptExpression skipwhite skipempty
 
 syntax match   javascriptInvalidOp             contained /[+\-*/%\^~=!<>&|?:]\+/
 
 syntax match   javascriptOpSymbol              contained /\(=\|?\)/ nextgroup=@javascriptExpression skipwhite skipempty " 2
 syntax match   javascriptOpSymbol              contained /\(===\|==\)/ " 2
-syntax match   javascriptOpSymbol              contained /!\+/ nextgroup=javascriptRegexpString skipwhite skipempty " 1
 syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/ " 2
 syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ " 6
 syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/ " 4
-syntax match   javascriptOpSymbol              contained /\(+=\|+\)/ " 2
-syntax match   javascriptOpSymbol              contained /\(-=\|-\)/ " 2
+syntax match   javascriptOpSymbol              contained /\(+=\)/ " 1
+syntax match   javascriptOpSymbol              contained /\(-=\)/ " 1
 syntax match   javascriptOpSymbol              contained /\(||\||=\||\)/ " 3
 syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/ " 3
 syntax match   javascriptOpSymbol              contained /\(*=\|*\)/ " 2
@@ -71,8 +70,9 @@ syntax match   javascriptOpSymbol              contained /\(%=\|%\)/ " 2
 syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/ " 2
 syntax match   javascriptOpSymbol              contained /\(\^\|\~\)/ " 2
 
-syntax match   javascriptOpSymbols             /\(++\|--\)/ " contains=javascriptOpSymbol
-" syntax match   javascriptOpSymbol              contained /\(++\|--\)/ " 2
+syntax match   javascriptOpSymbols             /!\+/ " 1
+syntax match   javascriptOpSymbols             /+\(+\|=\)\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 3: +, ++, +=
+syntax match   javascriptOpSymbols             /-\(-\|=\)\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 3: -, --, -=
 "
 syntax match   javascriptSpreadOp              contained /\.\.\./ " 1
 
@@ -350,9 +350,7 @@ syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBr
 syntax region  htmlScriptTag                   contained start=+<script+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue,htmlTagError,htmlEvent
 syntax match   javascriptEndColons             /[;,]/
 
-syntax region  javascriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\|!\|?\)\@<=\_s*/\ze[^/*]" skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline contains=javascriptRegexpSet,javascriptRegexpLeftBracket
-syntax region  javascriptRegexpSet             contained start="\[" skip="[^\\]\@<=\\\]" end="\]" extend 
-syntax match   javascriptRegexpLeftBracket     contained /\\\[/ 
+syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,2\}\s*$+ end=+/[gimy]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
 
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
@@ -402,8 +400,6 @@ if exists("did_javascript_hilink")
   HiLink javascriptTemplateSubstitution Label
   HiLink javascriptTemplateSB           javascriptTemplateSubstitution
   HiLink javascriptRegexpString         String
-  HiLink javascriptRegexpSet            javascriptRegexpString
-  HiLink javascriptRegexpLeftBracket    javascriptRegexpString
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
   HiLink javascriptPrototype            Type
