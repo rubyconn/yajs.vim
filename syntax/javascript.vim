@@ -56,21 +56,19 @@ syntax match   javascriptOpSymbols             /[+\-*/%\^~=<>&|?]\+/ contains=ja
 
 syntax match   javascriptInvalidOp             contained /[+\-*/%\^~=!<>&|?:]\+/
 
-syntax match   javascriptOpSymbol              contained /\(=\|?\)/ nextgroup=@javascriptExpression skipwhite skipempty " 2
-syntax match   javascriptOpSymbol              contained /\(===\|==\)/ " 2
-syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/ " 2
-syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ " 6
-syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/ " 4
-syntax match   javascriptOpSymbol              contained /\(+=\)/ " 1
-syntax match   javascriptOpSymbol              contained /\(-=\)/ " 1
-syntax match   javascriptOpSymbol              contained /\(||\||=\||\)/ " 3
-syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/ " 3
-syntax match   javascriptOpSymbol              contained /\(*=\|*\)/ " 2
-syntax match   javascriptOpSymbol              contained /\(%=\|%\)/ " 2
-syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/ " 2
-syntax match   javascriptOpSymbol              contained /\(\^\|\~\)/ " 2
+syntax match   javascriptOpSymbol              contained /\(=\|?\)/ nextgroup=@javascriptExpression skipwhite skipempty " 2: =, ?
+syntax match   javascriptOpSymbol              contained /\(===\|==\)/ " 2: ===, ==
+syntax match   javascriptOpSymbol              contained /\(!==\|!=\)/ " 2: !==, !=
+syntax match   javascriptOpSymbol              contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ " 6: >>>=, >>>, >>=, >>, >=, >
+syntax match   javascriptOpSymbol              contained /\(<<=\|<<\|<=\|<\)/ " 4: <<=, <<, <=, <
+syntax match   javascriptOpSymbol              contained /\(||\||=\||\)/ " 3: ||, |=, |
+syntax match   javascriptOpSymbol              contained /\(&&\|&=\|&\)/ " 3: &&, &=, &
+syntax match   javascriptOpSymbol              contained /\(*=\|*\)/ " 2: *=, *
+syntax match   javascriptOpSymbol              contained /\(%=\|%\)/ " 2: %=, %
+syntax match   javascriptOpSymbol              contained /\(\/=\|\/\)/ " 2: /=, /
+syntax match   javascriptOpSymbol              contained /\(\^\|\~\)/ " 2: ^, ~
 
-syntax match   javascriptOpSymbols             /!\+/ " 1
+syntax match   javascriptOpSymbols             /!\+/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 1: !
 syntax match   javascriptOpSymbols             /+\(+\|=\)\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 3: +, ++, +=
 syntax match   javascriptOpSymbols             /-\(-\|=\)\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 3: -, --, -=
 "
