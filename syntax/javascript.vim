@@ -210,7 +210,10 @@ syntax keyword javascriptPrototype             prototype
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this nextgroup=@javascriptAfterIdentifier
 syntax keyword javascriptVariable              let var const
-syntax keyword javascriptOperator              delete new instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
+syntax keyword javascriptOperator              delete instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
+syntax keyword javascriptOperator              new nextgroup=javascriptNewTarget,@javascriptValue,@javascriptTypes skipwhite skipempty
+syntax match   javascriptNewTarget             contained /.target/ contains=javascriptTarget
+syntax keyword javascriptTarget                contained target
 syntax keyword javascriptForOperator           contained in of
 syntax keyword javascriptBoolean               true false nextgroup=@javascriptComments skipwhite skipempty
 syntax keyword javascriptNull                  null undefined nextgroup=@javascriptComments skipwhite skipempty
@@ -429,6 +432,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptYieldGen             Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Identifier
+  HiLink javascriptTarget               Identifier
   " HiLink javascriptType                 Type
   HiLink javascriptNull                 Boolean
   HiLink javascriptNumber               Number
