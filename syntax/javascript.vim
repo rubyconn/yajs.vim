@@ -189,9 +189,9 @@ syntax cluster javascriptNoReserved            contains=@javascriptStrings,@java
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break catch class const continue
 syntax keyword javascriptReservedCase          containedin=ALLBUT,@javascriptNoReserved,javascriptCaseBlock case
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if 
-"import,javascriptRegexpString,javascriptPropertyName
+"import,export
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new return super
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof var
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield
@@ -294,9 +294,10 @@ syntax region  javascriptImportDef             start=/import/ end=/;\|\n/ contai
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptImportAs              contained as
 syntax region  javascriptImportBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptImportAs extend
-syntax keyword javascriptExport                export nextgroup=javascriptExportDefault skipwhite
-syntax keyword javascriptExport                module
+syntax region  javascriptExportDef             start=/export/ end=/;\|\n/ contains=javascriptExport,javascriptExportDefault,javascriptExportBlock,javascriptString,javascriptEndColons keepend
+syntax keyword javascriptExport                contained export module from
 syntax keyword javascriptExportDefault         contained default
+syntax region  javascriptExportBlock           matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=javascriptImportAs,javascriptExportDefault extend
 
 if &filetype =~ 'javascript'
   syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP fold
