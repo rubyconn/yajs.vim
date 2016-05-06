@@ -264,6 +264,7 @@ runtime syntax/yajs/es6-function.vim
 runtime syntax/yajs/es6-math.vim
 runtime syntax/yajs/es6-date.vim
 runtime syntax/yajs/es6-json.vim
+runtime syntax/yajs/es6-reflect.vim
 runtime syntax/yajs/es6-regexp.vim
 runtime syntax/yajs/es6-map.vim
 runtime syntax/yajs/es6-set.vim
