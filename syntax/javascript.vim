@@ -206,8 +206,11 @@ syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoR
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
 
-syntax keyword javascriptImport                from as import
+syntax keyword javascriptImport                from as
+syntax keyword javascriptImport                import nextgroup=javascriptImportPattern skipwhite skipempty
 syntax keyword javascriptExport                export from default
+
+syntax match   javascriptImportPattern         contained /*/
 
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this nextgroup=@javascriptAfterIdentifier
