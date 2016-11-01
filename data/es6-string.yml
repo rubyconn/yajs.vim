@@ -4,6 +4,7 @@ javascriptGlobal:
 javascriptStringStaticMethod:
   - fromCharCode
   - fromCodePoint
+  - raw
 
 javascriptStringMethod:
   - anchor
