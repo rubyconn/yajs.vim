@@ -170,6 +170,8 @@ syntax region  javascriptTemplateSubstitution  contained matchgroup=javascriptTe
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
 syntax region  javascriptArray                 matchgroup=javascriptBrackets start=/\[/ end=/]/ contains=@javascriptValue,javascriptComma,javascriptForComprehension,@javascriptComments,javascriptSpreadOp nextgroup=@javascriptComments,javascriptOpSymbols,@javascriptAfterIdentifier skipwhite skipempty
 
+syntax match   javascriptUnicodeEscapeSequence /\\u{[0-9a-fA-F]\{4,}}/ nextgroup=@javascriptComments skipwhite skipempty
+
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
