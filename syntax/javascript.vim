@@ -308,11 +308,13 @@ else
   syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
 endif
 
-syntax match   javascriptObjectMethodName      contained /[a-zA-Z_$]\k*\ze\_s*(/ nextgroup=javascriptFuncArg skipwhite skipempty
+syntax match   javascriptObjectMethodName      contained /\k*\ze\_s*(/ nextgroup=javascriptFuncArg skipwhite skipempty
 syntax cluster javascriptObjectMethod          contains=javascriptMethodAccessor,javascriptObjectMethodName
 
-syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
-syntax match   javascriptMethodAccessor        contained /\(\(set\|get\)\>\|\*\)\ze\_s*\(\[\|\k\)/ contains=@javascriptMethodAccessorWords nextgroup=javascriptMethodName skipwhite
+syntax match   javascriptMethodName            contained /\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
+" syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
+syntax region  javascriptMethodName            contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptFuncArg skipwhite skipempty extend
+syntax match   javascriptMethodAccessor        contained /\(\(set\|get\)\>\|\*\)\ze\_s*\(\[\|\k\|["']\)/ contains=javascriptMethodAccessorWords nextgroup=javascriptMethodName skipwhite
 syntax keyword javascriptMethodAccessorWords   contained get set
 syntax region  javascriptMethodName            contained matchgroup=javascriptMethodName start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptFuncArg skipwhite skipempty
 
@@ -466,6 +468,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptClassName            Function
   HiLink javascriptClassSuperName       Function
   HiLink javascriptClassStatic          StorageClass
+  HiLink javascriptMethodAccessorWords  StorageClass
   HiLink javascriptClassSuper           keyword
 
   HiLink shellbang                      Comment
