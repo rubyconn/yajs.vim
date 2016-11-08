@@ -200,7 +200,8 @@ syntax keyword javascriptReservedCase          containedin=ALLBUT,@javascriptNoR
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if  import
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof 
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved,javascriptObjectMethodName var
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield
 
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved enum implements package protected static
@@ -383,7 +384,7 @@ syntax region  javascriptArrowFuncArg          contained matchgroup=javascriptPa
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyncFunc,javascriptSyncFunc
 
 " Special object for arrow function direct return
-syntax region  javascriptParenObjectLiteral    contained matchgroup=javascriptBraces start=/(\s*{/hs=s+1 end=/}\s*)/he=e-1 contains=@javascriptComments,javascriptObjectLabel,javascriptComma,@javascriptObjectMethod,javascriptPropertyNameString,javascriptComputedPropertyName,@javascriptValue fold
+syntax region  javascriptParenObjectLiteral    matchgroup=javascriptBraces start=/(\s*\ze{/hs=s+1 end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
 
 " For ((foo) => {})
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(\ze\_s*(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty
@@ -454,9 +455,9 @@ if exists("did_javascript_hilink")
   HiLink javascriptTry                  Statement
   HiLink javascriptExceptions           Statement
 
-  HiLink javascriptMethodName           Function
+  HiLink javascriptMethodName           javascriptLabel
   HiLink javascriptMethodAccessor       Operator
-  HiLink javascriptObjectMethodName     Function
+  HiLink javascriptObjectMethodName     javascriptLabel
 
   HiLink javascriptFuncKeyword          Keyword
   HiLink javascriptAsyncFunc            Keyword
