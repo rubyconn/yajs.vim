@@ -29,6 +29,8 @@ javascriptStringMethod:
   - match
   - normalize
   # - quote
+  - padStart
+  - padEnd
   - repeat
   - replace
   - search
