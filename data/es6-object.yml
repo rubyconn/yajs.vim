@@ -6,6 +6,7 @@ javascriptObjectStaticMethod:
   - defineProperties
   - defineProperty
   - freeze
+  - getOwnPropertyDescriptors
   - getOwnPropertyDescriptor
   - getOwnPropertyNames
   - getOwnPropertySymbols
