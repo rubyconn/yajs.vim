@@ -296,6 +296,7 @@ runtime syntax/yajs/web-service-worker.vim
 runtime syntax/yajs/web-broadcast.vim
 runtime syntax/yajs/dom-node.vim
 runtime syntax/yajs/dom-elem.vim
+runtime syntax/yajs/dom-form.vim
 runtime syntax/yajs/dom-document.vim
 runtime syntax/yajs/dom-event.vim
 runtime syntax/yajs/dom-storage.vim
