@@ -385,7 +385,7 @@ syntax region  javascriptArrowFuncArg          contained matchgroup=javascriptPa
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyncFunc,javascriptSyncFunc
 
 " Special object for arrow function direct return
-syntax region  javascriptParenObjectLiteral    matchgroup=javascriptBraces start=/(\s*\ze{/hs=s+1 end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
+syntax region  javascriptParenObjectLiteral    start=/(\s*\ze{/ end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
 
 " For ((foo) => {})
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(\ze\_s*(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty
