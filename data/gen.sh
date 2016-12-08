@@ -31,6 +31,7 @@ files='
   web-service-worker
   dom-node
   dom-elem
+  dom-form
   dom-event
   dom-document
   dom-storage

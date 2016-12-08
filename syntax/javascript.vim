@@ -105,7 +105,7 @@ syntax keyword javascriptDocTags               contained arguments callback lend
 syntax keyword javascriptDocTags               contained variation nextgroup=javascriptDocNumParam skipwhite
 
 syntax keyword javascriptDocTags               contained author class classdesc copyright default defaultvalue nextgroup=javascriptDocDesc skipwhite
-syntax keyword javascriptDocTags               contained deprecated description external host nextgroup=javascriptDocDesc skipwhite
+syntax keyword javascriptDocTags               contained deprecated description desc external host nextgroup=javascriptDocDesc skipwhite
 syntax keyword javascriptDocTags               contained file fileOverview overview namespace requires since version nextgroup=javascriptDocDesc skipwhite
 syntax keyword javascriptDocTags               contained summary todo license preserve nextgroup=javascriptDocDesc skipwhite
 
@@ -223,7 +223,7 @@ syntax match   javascriptImportPattern         contained /*/
 
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this nextgroup=@javascriptAfterIdentifier
-syntax keyword javascriptVariable              let var const
+syntax keyword javascriptVariable              let var const nextgroup=javascriptIdentifierName skipwhite
 syntax keyword javascriptOperator              delete instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
 syntax keyword javascriptOperator              new nextgroup=javascriptNewTarget,@javascriptValue,@javascriptTypes skipwhite skipempty
 syntax match   javascriptNewTarget             contained /.target/ contains=javascriptTarget
@@ -257,7 +257,7 @@ else
   syntax cluster htmlJavaScript                remove=javascriptReservedCase
 endif
 syntax region  javascriptCaseBlock             matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptCaseColon,javascriptCaseExpression,@htmlJavaScriptForCase,javascriptDefault fold
-syntax region  javascriptCaseExpression        contained start=/case/ end=/:/ contains=javascriptCase,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
+syntax region  javascriptCaseExpression        contained start=/case/ end=/:/ contains=javascriptCase,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty keepend
 syntax match   javascriptCaseColon             contained /:/ nextgroup=javascriptBlock skipwhite skipempty
 
 syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props,@javascriptProps,@_semantic transparent nextgroup=@javascriptAfterIdentifier
@@ -296,6 +296,7 @@ runtime syntax/yajs/web-service-worker.vim
 runtime syntax/yajs/web-broadcast.vim
 runtime syntax/yajs/dom-node.vim
 runtime syntax/yajs/dom-elem.vim
+runtime syntax/yajs/dom-form.vim
 runtime syntax/yajs/dom-document.vim
 runtime syntax/yajs/dom-event.vim
 runtime syntax/yajs/dom-storage.vim
@@ -384,7 +385,7 @@ syntax region  javascriptArrowFuncArg          contained matchgroup=javascriptPa
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyncFunc,javascriptSyncFunc
 
 " Special object for arrow function direct return
-syntax region  javascriptParenObjectLiteral    matchgroup=javascriptBraces start=/(\s*\ze{/hs=s+1 end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
+syntax region  javascriptParenObjectLiteral    start=/(\s*\ze{/ end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
 
 " For ((foo) => {})
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(\ze\_s*(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty
