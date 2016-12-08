@@ -317,7 +317,7 @@ endif
 syntax match   javascriptObjectMethodName      contained /\k*\ze\_s*(/ nextgroup=javascriptFuncArg skipwhite skipempty
 syntax cluster javascriptObjectMethod          contains=javascriptMethodAccessor,javascriptObjectMethodName
 
-syntax match   javascriptMethodName            contained /\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
+syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
 " syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite skipempty
 syntax region  javascriptMethodName            contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptFuncArg skipwhite skipempty extend
 syntax match   javascriptMethodAccessor        contained /\(\(set\|get\)\>\|\*\)\ze\_s*\(\[\|\k\|["']\)/ contains=javascriptMethodAccessorWords nextgroup=javascriptMethodName skipwhite
@@ -339,7 +339,7 @@ syntax match   javascriptDefaultAssign         contained /=/ nextgroup=@javascri
 
 "Class
 syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassName,javascriptClassBlock,javascriptClassExtends skipwhite
-syntax keyword javascriptClassSuper            super
+syntax keyword javascriptClassSuper            super nextgroup=@javascriptAfterIdentifier skipwhite skipempty
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
 syntax match   javascriptClassSuperName        contained /[0-9a-zA-Z_$][0-9a-zA-Z_$\[\]\.]*/ nextgroup=javascriptClassBlock skipwhite
 syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassSuperName,javascriptClassExtendsNew skipwhite
@@ -368,7 +368,7 @@ syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|
 
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptTagRef,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
-syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,@javascriptValue,javascriptObjectLiteral,javascriptFuncKeyword,javascriptYield,javascriptIdentifierName,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,javascriptGlobalMethod,jsxRegion
+syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,@javascriptValue,javascriptObjectLiteral,javascriptFuncKeyword,javascriptYield,javascriptIdentifierName,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,javascriptGlobalMethod,jsxRegion,javascriptClassSuper
 syntax cluster javascriptEventExpression       contains=javascriptArrowFuncDef,javascriptParenExp,@javascriptValue,javascriptObjectLiteral,javascriptFuncKeyword,javascriptIdentifierName,javascriptRegexpString,@javascriptEventTypes,@javascriptOps,javascriptGlobal,jsxRegion
 
 syntax region  javascriptLoopParen             contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptVariable,javascriptForOperator,javascriptEndColons,@javascriptExpression nextgroup=javascriptBlock skipwhite skipempty
