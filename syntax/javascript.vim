@@ -341,7 +341,7 @@ syntax match   javascriptDefaultAssign         contained /=/ nextgroup=@javascri
 syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassName,javascriptClassBlock,javascriptClassExtends skipwhite
 syntax keyword javascriptClassSuper            super nextgroup=@javascriptAfterIdentifier skipwhite skipempty
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
-syntax match   javascriptClassSuperName        contained /[0-9a-zA-Z_$][0-9a-zA-Z_$\[\]\.\(\)]*/ contains=javascriptSyncFunc nextgroup=javascriptClassBlock skipwhite
+syntax match   javascriptClassSuperName        contained /[0-9a-zA-Z_$][0-9a-zA-Z_$\[\]\.\(\)]*/ nextgroup=javascriptClassBlock skipwhite
 syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassSuperName,javascriptClassExtendsNew skipwhite
 syntax keyword javascriptClassExtendsNew       contained new nextgroup=javascriptClassSuperName skipwhite
 syntax region  javascriptClassBlock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodName,javascriptMethodAccessor,javascriptClassStatic,@javascriptComments fold
