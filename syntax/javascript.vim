@@ -241,7 +241,7 @@ syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitch
 syntax keyword javascriptCase                  contained case
 syntax keyword javascriptDefault               contained default nextgroup=javascriptCaseColon skipwhite skipempty
 syntax keyword javascriptStatementKeyword      with yield
-syntax keyword javascriptReturn                return nextgroup=@javascriptValue,javascriptClassSuper skipwhite
+syntax keyword javascriptReturn                return nextgroup=@javascriptValue,javascriptClassSuper skipwhite skipempty
 syntax keyword javascriptYield                 yield nextgroup=javascriptYieldGen skipwhite
 syntax match   javascriptYieldGen              contained /\*/
 
@@ -384,7 +384,9 @@ syntax region  javascriptArrowFuncArg          contained matchgroup=javascriptPa
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyncFunc,javascriptSyncFunc
 
 " Special object for arrow function direct return
-syntax region  javascriptParenObjectLiteral    start=/(\s*\ze{/ end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
+syntax region  javascriptParenObjectLiteral    start=/(\_s*\ze{/ end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
+" Special object for jsx return
+syntax region  javascriptParenTagLiteral       containedin=@javascriptValue start=/(\_s*\ze</ end=/)/ contains=@javascriptExpression,@javascriptComments fold
 
 " For ((foo) => {})
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(\ze\_s*(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty
