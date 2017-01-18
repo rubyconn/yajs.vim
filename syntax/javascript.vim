@@ -386,7 +386,7 @@ syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyn
 " Special object for arrow function direct return
 syntax region  javascriptParenObjectLiteral    start=/(\_s*\ze{/ end=/)/ contains=javascriptObjectLiteral,@javascriptComments fold
 " Special object for jsx return
-syntax region  javascriptParenTagLiteral       containedin=@javascriptValue start=/(\_s*\ze</ end=/)/ contains=@javascriptExpression,@javascriptComments fold
+syntax region  javascriptParenTagLiteral       containedin=@javascriptValue start=/(\ze\_s*</ end=/)/ contains=@javascriptExpression,@javascriptComments fold
 
 " For ((foo) => {})
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(\ze\_s*(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty
