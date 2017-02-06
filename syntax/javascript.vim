@@ -198,7 +198,7 @@ syntax cluster javascriptNoReserved            contains=@javascriptStrings,@java
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break catch class const continue
 syntax keyword javascriptReservedCase          containedin=ALLBUT,@javascriptNoReserved,javascriptCaseBlock case
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if  import
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if import
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new return super
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof 
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved,javascriptObjectMethodName var
@@ -219,7 +219,7 @@ syntax keyword javascriptImport                from as
 syntax keyword javascriptImport                import nextgroup=javascriptImportPattern skipwhite skipempty
 syntax keyword javascriptExport                export from default
 
-syntax match   javascriptImportPattern         contained /*/
+syntax match   javascriptImportPattern         contained /\*/
 
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this nextgroup=@javascriptAfterIdentifier
