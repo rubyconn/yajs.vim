@@ -17,7 +17,7 @@ javascriptArrayMethod:
   - findIndex
   - forEach
   - indexOf
-  # - includes
+  - includes
   - join
   - keys
   - lastIndexOf
