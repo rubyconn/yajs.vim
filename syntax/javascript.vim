@@ -71,8 +71,11 @@ syntax match   javascriptOpSymbols             /!\+/ nextgroup=javascriptRegexpS
 syntax match   javascriptOpSymbols             /!==\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 2: !=, !==
 syntax match   javascriptOpSymbols             /+\(+\|=\)\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 3: +, ++, +=
 syntax match   javascriptOpSymbols             /-\(-\|=\)\?/ nextgroup=javascriptRegexpString,javascriptInvalidOp " 3: -, --, -=
-"
+" spread operator
 syntax match   javascriptSpreadOp              contained /\.\.\./ " 1
+" exponentiation operator
+syntax match   javascriptOpSymbol              contained /\(**\|**=\)/ " 2: **, **=
+
 
 " 37 + 1 operators
 " syntax match   javascriptOpSymbol              contained /\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty
@@ -389,6 +392,13 @@ syntax region  javascriptParenTagLiteral       containedin=@javascriptValue star
 
 " For ((foo) => {})
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(\ze\_s*(/ end=/)/ contains=@javascriptExpression nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty
+
+" async await
+syntax keyword javascriptAsyncFuncKeyword      async nextgroup=javascriptFuncKeyword,javascriptArrowFuncDef skipwhite
+syntax keyword javascriptAwaitFuncKeyword      await nextgroup=@javascriptExpression skipwhite
+
+syntax cluster javascriptExpression            add=javascriptAsyncFuncKeyword,javascriptAwaitFuncKeyword
+syntax cluster afterArrowFunc                  add=javascriptAsyncFuncKeyword
 
 if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
