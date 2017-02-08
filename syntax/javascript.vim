@@ -198,14 +198,14 @@ syntax cluster javascriptTemplates             contains=javascriptTemplate,javas
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptTemplates,javascriptTagRef,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyNameString
 syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptParenObjectLiteral,javascriptObjectLabel,javascriptClassBlock,javascriptMethodName,javascriptMethod
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break do catch class const continue
 syntax keyword javascriptReservedCase          containedin=ALLBUT,@javascriptNoReserved,javascriptCaseBlock case
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if import
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new null return super
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof 
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved,javascriptObjectMethodName var
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield await
 
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved enum implements package protected static
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved interface private public abstract boolean
