@@ -481,6 +481,7 @@ if exists("did_javascript_hilink")
 
   HiLink javascriptClassKeyword         Keyword
   HiLink javascriptClassExtends         Keyword
+  HiLink javascriptClassExtendsNew      Operator
   HiLink javascriptClassName            Function
   HiLink javascriptClassSuperName       Function
   HiLink javascriptClassStatic          StorageClass
