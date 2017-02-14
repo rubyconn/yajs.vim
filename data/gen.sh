@@ -29,6 +29,7 @@ files='
   web-crypto
   web-fetch
   web-service-worker
+  web-payment
   dom-node
   dom-elem
   dom-form
