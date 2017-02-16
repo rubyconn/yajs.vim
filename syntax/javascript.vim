@@ -437,7 +437,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptConditional          Conditional
   HiLink javascriptConditionalElse      Conditional
   HiLink javascriptSwitch               Conditional
-  HiLink javascriptCase                 Conditional
+  HiLink javascriptCase                 Label
   HiLink javascriptDefault              javascriptCase
   HiLink javascriptExportDefault        javascriptCase
   HiLink javascriptBranch               Conditional
@@ -467,7 +467,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptTry                  Statement
   HiLink javascriptExceptions           Statement
 
-  HiLink javascriptMethodName           javascriptLabel
+  HiLink javascriptMethodName           Function
   HiLink javascriptMethodAccessor       Operator
   HiLink javascriptObjectMethodName     javascriptLabel
 
