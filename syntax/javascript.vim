@@ -462,8 +462,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptObjectLabel          javascriptLabel
   HiLink javascriptLabel                Label
   HiLink javascriptPropertyNameString   Label
-  HiLink javascriptImport               Special
-  HiLink javascriptExport               Special
+  HiLink javascriptImport               Include
+  HiLink javascriptExport               Include
   HiLink javascriptTry                  Statement
   HiLink javascriptExceptions           Statement
 
