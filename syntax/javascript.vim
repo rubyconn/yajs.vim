@@ -244,7 +244,7 @@ syntax keyword javascriptSwitch                switch nextgroup=javascriptSwitch
 syntax keyword javascriptCase                  contained case
 syntax keyword javascriptDefault               contained default nextgroup=javascriptCaseColon skipwhite skipempty
 syntax keyword javascriptStatementKeyword      with yield
-syntax keyword javascriptReturn                return nextgroup=@javascriptValue,javascriptClassSuper skipwhite
+syntax keyword javascriptReturn                return nextgroup=@javascriptValue,javascriptClassSuper,@javascriptComments skipwhite
 syntax keyword javascriptYield                 yield nextgroup=javascriptYieldGen skipwhite
 syntax match   javascriptYieldGen              contained /\*/
 
