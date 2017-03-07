@@ -79,17 +79,14 @@ syntax match   javascriptSpreadOp              contained /\.\.\./ " 1
 syntax match   javascriptOpSymbol              contained /\(**\|**=\)/ " 2: **, **=
 
 
-" 37 + 1 operators
-" syntax match   javascriptOpSymbol              contained /\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)/ nextgroup=javascriptInvalidOp skipwhite skipempty
-
-"JavaScript comments
+" Comment
 syntax keyword javascriptCommentTodo           contained TODO FIXME XXX TBD
 syntax region  javascriptLineComment           start="//" end="\n" contains=@Spell,javascriptCommentTodo 
 syntax region  javascriptComment               start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo extend fold
 syntax region  javascriptComment               start="<!--"  end="--\s*>" contains=@Spell,javascriptCommentTodo extend fold
 syntax cluster javascriptComments              contains=javascriptDocComment,javascriptComment,javascriptLineComment
 
-"JSDoc
+" JSDoc
 syntax case ignore
 
 syntax region  javascriptDocComment            start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold keepend
@@ -167,17 +164,18 @@ syntax cluster javascriptStatement             contains=javascriptBlock,javascri
 syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp,javascriptMethod skipwhite skipempty
 syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
-"Syntax in the JavaScript code
-" syntax match   javascriptASCII                 contained /\\\d\d\d/
+" String
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=@javascriptComments skipwhite skipempty extend
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=@javascriptComments,javascriptOpSymbols skipwhite skipempty keepend
 syntax region  javascriptTemplateSubstitution  contained matchgroup=javascriptTemplateSB start=/\${/ end=/}/ contains=javascriptGlobal,javascriptBOMWindowProp,javascriptBOMWindowMethod,@javascriptExpression extend
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
 syntax region  javascriptArray                 matchgroup=javascriptBrackets start=/\[/ end=/]/ contains=@javascriptValue,javascriptComma,javascriptForComprehension,@javascriptComments,javascriptSpreadOp nextgroup=@javascriptComments,javascriptOpSymbols,@javascriptAfterIdentifier skipwhite skipempty
 
+" Unicode Escape
 syntax match   javascriptUnicodeEscapeSequence /\\u[0-9a-fA-F]\{4}/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptUnicodeEscapeSequence /\\u{[0-9a-fA-F]\+}/ nextgroup=@javascriptComments skipwhite skipempty
 
+" Number
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
 syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/ nextgroup=@javascriptComments skipwhite skipempty
@@ -215,9 +213,7 @@ syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoR
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved long native short synchronized transient
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved volatile
 
-"this
-
-"JavaScript Prototype
+" JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
 
 syntax keyword javascriptImport                from as
@@ -226,7 +222,7 @@ syntax keyword javascriptExport                export from default
 
 syntax match   javascriptImportPattern         contained /\*/
 
-"Program Keywords
+" Keywords
 syntax keyword javascriptIdentifier            arguments this nextgroup=@javascriptAfterIdentifier
 syntax keyword javascriptVariable              let var const nextgroup=javascriptIdentifierName skipwhite
 syntax keyword javascriptOperator              delete instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
@@ -237,7 +233,7 @@ syntax keyword javascriptForOperator           contained in of
 syntax keyword javascriptBoolean               true false nextgroup=@javascriptComments skipwhite skipempty
 syntax keyword javascriptNull                  null undefined nextgroup=@javascriptComments skipwhite skipempty
 
-"Statement Keywords
+" Statement Keywords
 syntax keyword javascriptConditional           if else
 syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
