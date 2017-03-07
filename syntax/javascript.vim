@@ -483,8 +483,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptClassExtendsNew      Operator
   HiLink javascriptClassName            Function
   HiLink javascriptClassSuperName       Function
-  HiLink javascriptClassStatic          StorageClass
-  HiLink javascriptMethodAccessorWords  StorageClass
+  HiLink javascriptClassStatic          Keyword
+  HiLink javascriptMethodAccessorWords  Keyword
   HiLink javascriptClassSuper           keyword
 
   HiLink shellbang                      Comment
