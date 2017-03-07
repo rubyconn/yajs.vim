@@ -11,11 +11,6 @@
 "               IRC Channel in Freenode)
 
 
-" if exists("b:yajs_loaded")
-  " finish
-" else
-  " let b:yajs_loaded = 1
-" endif
 if !exists("main_syntax")
   if version < 600
     syntax clear
@@ -40,18 +35,25 @@ else
   finish
 endif
 
-"Dollar sign is permitted anywhere in an identifier
-setlocal iskeyword-=$
-if &filetype =~ 'javascript'
-  setlocal iskeyword+=$
+" Dollar sign is permitted anywhere in an identifier
+" Patch 7.4.1142
+if has("patch-7.4-1142")
+  if has("win32")
+    syn iskeyword @,48-57,_,128-167,224-235,$
+  else
+    syn iskeyword @,48-57,_,192-255,$
+  endif
 endif
+
 
 syntax sync fromstart
 
-"Syntax coloring for Node.js shebang line
+" Syntax coloring for Node.js shebang line
 syntax match   shellbang "^#!.*node\>"
 syntax match   shellbang "^#!.*iojs\>"
 
+
+" Operator
 syntax match   javascriptOpSymbols             /[+\-*/%\^~=<>&|?]\+/ contains=javascriptOpSymbol,javascriptInvalidOp nextgroup=@javascriptComments,@javascriptExpression skipwhite skipempty
 
 syntax match   javascriptInvalidOp             contained /[+\-*/%\^~=!<>&|?:]\+/
