@@ -30,6 +30,7 @@ files='
   web-fetch
   web-service-worker
   web-payment
+  web-encoding
   dom-node
   dom-elem
   dom-form
