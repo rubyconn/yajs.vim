@@ -208,10 +208,12 @@ syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoR
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield await
 
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved enum implements package protected static
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved interface private public abstract boolean
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved byte char double final float goto int
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved long native short synchronized transient
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved interface private public 
+"old keywords
+" syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved abstract boolean
+" syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved byte char double final float goto int
+" syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved long native short synchronized throws
+" syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved transient volatile
 
 " JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
