@@ -122,8 +122,13 @@ syntax keyword javascriptDocTags               contained see nextgroup=javascrip
 syntax keyword javascriptDocTags               contained category inheritparams nextgroup=javascriptDocParam skipwhite
 syntax keyword javascriptDocTags               contained toparam nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
 
-"syntax for event firing
+" syntax for event firing
 syntax keyword javascriptDocTags               contained emits fires nextgroup=javascriptDocEventRef skipwhite
+
+" ESDoc
+syntax keyword javascriptDocTags               contained experimental nextgroup=javascriptDocDesc skipwhite
+syntax keyword javascriptDocTags               contained listens nextgroup=javascriptDocNamedParamType skipwhite
+syntax keyword javascriptDocTags               contained test nextgroup=javascriptDocParamType skipwhite
 
 syntax keyword javascriptDocTags               contained function func method nextgroup=javascriptDocName skipwhite
 syntax match   javascriptDocName               contained /\h\w*/
