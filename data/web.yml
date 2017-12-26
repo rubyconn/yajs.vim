@@ -316,7 +316,6 @@ javascriptBOM:
     - NavigatorLanguage
     - NavigatorOnLine
     - NavigatorPlugins
-    - NetworkInformation
     - Node
     - NodeFilter
     - NodeIterator
