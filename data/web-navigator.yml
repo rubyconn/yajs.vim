@@ -30,6 +30,7 @@ javascriptBOMNavigatorProp:
 
 javascriptBOMNavigatorMethod:
     - addIdleObserver
+    - geolocation
     - getDeviceStorage
     - getDeviceStorages
     - getGamepads

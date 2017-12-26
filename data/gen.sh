@@ -32,6 +32,7 @@ files='
   web-payment
   web-encoding
   web-network
+  web-geo
   dom-node
   dom-elem
   dom-form
