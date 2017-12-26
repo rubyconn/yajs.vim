@@ -49,9 +49,9 @@ syntax keyword javascriptBOM LinkStyle LocalFileSystem LocalFileSystemSync Locat
 syntax keyword javascriptBOM LockedFile MediaQueryList MediaQueryListListener MediaRecorder
 syntax keyword javascriptBOM MediaSource MediaStream MediaStreamTrack MutationObserver
 syntax keyword javascriptBOM Navigator NavigatorGeolocation NavigatorID NavigatorLanguage
-syntax keyword javascriptBOM NavigatorOnLine NavigatorPlugins NetworkInformation Node
-syntax keyword javascriptBOM NodeFilter NodeIterator NodeList Notification OfflineAudioContext
-syntax keyword javascriptBOM OscillatorNode PannerNode ParentNode Performance PerformanceNavigation
+syntax keyword javascriptBOM NavigatorOnLine NavigatorPlugins Node NodeFilter NodeIterator
+syntax keyword javascriptBOM NodeList Notification OfflineAudioContext OscillatorNode
+syntax keyword javascriptBOM PannerNode ParentNode Performance PerformanceNavigation
 syntax keyword javascriptBOM PerformanceTiming Permissions PermissionSettings Plugin
 syntax keyword javascriptBOM PluginArray Position PositionError PositionOptions PowerManager
 syntax keyword javascriptBOM ProcessingInstruction PromiseResolver PushManager Range
