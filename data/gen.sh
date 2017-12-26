@@ -31,6 +31,7 @@ files='
   web-service-worker
   web-payment
   web-encoding
+  web-network
   dom-node
   dom-elem
   dom-form

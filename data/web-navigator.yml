@@ -1,6 +1,7 @@
 javascriptBOMNavigatorProp:
     - battery
     - buildID
+    - connection
     - cookieEnabled
     - doNotTrack
     - maxTouchPoints

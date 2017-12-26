@@ -1,4 +1,4 @@
-syntax keyword javascriptBOMNavigatorProp contained battery buildID cookieEnabled
+syntax keyword javascriptBOMNavigatorProp contained battery buildID connection cookieEnabled
 syntax keyword javascriptBOMNavigatorProp contained doNotTrack maxTouchPoints oscpu
 syntax keyword javascriptBOMNavigatorProp contained productSub push serviceWorker
 syntax keyword javascriptBOMNavigatorProp contained vendor vendorSub

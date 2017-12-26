@@ -1,0 +1,6 @@
+javascriptBOMNetworkProp:
+    - downlink
+    - downlinkMax
+    - effectiveType
+    - rtt
+    - type
