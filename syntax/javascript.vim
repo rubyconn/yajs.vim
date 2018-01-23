@@ -76,7 +76,7 @@ syntax match   javascriptOpSymbols             /-\(-\|=\)\?/ nextgroup=javascrip
 " spread operator
 syntax match   javascriptSpreadOp              contained /\.\.\./ " 1
 " exponentiation operator
-syntax match   javascriptOpSymbol              contained /\(**\|**=\)/ " 2: **, **=
+syntax match   javascriptOpSymbol              contained /\(\*\*\|\*\*=\)/ " 2: **, **=
 
 
 " Comment
