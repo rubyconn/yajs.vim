@@ -25,6 +25,7 @@ javascriptDOMElemAttrs:
     - style
 
 javascriptDOMElemFuncs:
+    - closest
     - getAttributeNS
     - getAttributeNode
     - getAttributeNodeNS
