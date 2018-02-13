@@ -7,7 +7,7 @@ syntax keyword javascriptDOMElemAttrs contained classList className name outerHT
 syntax keyword javascriptDOMElemAttrs contained style
 if exists("did_javascript_hilink") | HiLink javascriptDOMElemAttrs Keyword
 endif
-syntax keyword javascriptDOMElemFuncs contained closest getAttributeNS getAttributeNode
+syntax keyword javascriptDOMElemFuncs contained animate closest getAttributeNS getAttributeNode
 syntax keyword javascriptDOMElemFuncs contained getAttributeNodeNS getBoundingClientRect
 syntax keyword javascriptDOMElemFuncs contained getClientRects getElementsByClassName
 syntax keyword javascriptDOMElemFuncs contained getElementsByTagName getElementsByTagNameNS
