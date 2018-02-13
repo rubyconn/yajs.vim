@@ -41,6 +41,17 @@ Credits
 - Zhao Yi, Claudio Fleiner, Scott Shattuck (This file is based on their hard work)
 - gumnos (From the #vim IRC Channel in Freenode) (Who helped me figured out the crazy Vim Regexes)
 
+Reference
+---------
+
+### JSDoc
+
+* http://usejsdoc.org/
+* https://github.com/senchalabs/jsduck/wiki
+* https://yui.github.io/yuidoc/syntax/
+* https://google.github.io/styleguide/javascriptguide.xml#JSDoc_Tag_Reference
+* https://github.com/google/closure-compiler/wiki/Annotating-JavaScript-for-the-Closure-Compiler
+
 Report Issue
 ------------
 
